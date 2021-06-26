@@ -49,7 +49,7 @@ function scrollToBottom () {
 }
 
 $(() => {
-//x
+//x--x
   $('#msg-form').on('submit',(e) => {
     e.preventDefault();
     const content = $('#text').val();
