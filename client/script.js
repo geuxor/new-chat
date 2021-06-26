@@ -74,10 +74,12 @@ function postMessage(msg) {
 }
 
 $(() => {
+
   console.log('starting script');
   //$.post('http://localhost:3000/messages', msg);
   dbMessages();
   $('#msg-form').on('submit', (e) => {
+
     e.preventDefault();
     const content = $('#text').val();
     if (content) {
