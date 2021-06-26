@@ -1,26 +1,22 @@
-const db = {
-  msgs: [{
-    content: '1A life spent making mistakes is not only more honourable but more useful than a life spent in doing nothing',
-    authorId: true,
-    timestamp: 1112231224946
-  },
-  {
-    content: '2Genius is one percent inspiration and ninety-nine percent perspiration.',
-    authorId: true,
-    timestamp: 1221631224946
-  },
-  {
-    content: '3You can observe a lot just by watching.',
-    authorId: false,
-    timestamp: 1324611224946
-  },
-  {
-    content: '4Be the chief but never the lord.',
-    authorId: false,
-    timestamp: 1424131224946
+const fs = require('fs');
+
+const dataFilePath = __dirname + '/data.json';
+
+const db = { msgs: [] }; // stuff in here
+
+fs.readFile(dataFilePath, 'utf8', function (err, data) {
+  try {
+    data = JSON.parse(data);
+  } catch (e) {
+    // Catch error in case file doesn't exist or isn't valid JSON
   }
-  ]
-};
+  if (data && data.msgs) db.msgs = data.msgs;
+});
+
+setInterval(function () {
+  fs.writeFile(dataFilePath, JSON.stringify(db), function (err) {
+    if (err) throw err;
+  });
+}, 5000);
 
 module.exports = db;
-
