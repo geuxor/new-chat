@@ -4,22 +4,8 @@ const app = express();
 const port = 3000;
 
 app.use(express.static(__dirname + '../../../client'));
-app.use(express.json());  //deal with the req - must be before the router
-// app.use(express.bodyParser)
+app.use(express.json());  //deal with the req - must be before the router - does bodyparser automatically
 app.use(router);
-
-
-
-
 app.listen(port, () => {
-  console.log(`server running at ${port} :D`);
+  console.log(`server running at http://localhost:${port} 🚀`);
 });
-
-
-// app.get('/', (response, requ est) => {
-//   response.sendFile('../../client/index.html');
-// })
-  
-// app.use(function (request, response) {
-//   response.sendFile('../../client/');
-// });
